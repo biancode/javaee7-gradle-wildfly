@@ -102,4 +102,4 @@ License
 --------------
 **GNU GPLv3 Copyright**
 *by Klaus Landsdorf - Lohne (Olb) - Germany*
-http://ioskmobilephone.bianco-royal.de/
+
