@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+
+<f:view contracts="default">
+	<ui:composition template="/layout.xhtml">
+		<ui:define name="content-top">
+			<h:outputText value="Start-Seite"></h:outputText>
+		</ui:define>
+		<ui:define name="content-center">
+			<div class="container">
+				<div class="row">
+					<h:graphicImage library="bianco" name="biancoPublic.jpg" />
+				</div>
+				<div class="row">
+					<p>
+						<h:button styleClass="infobutton" onclick="showContractName()"
+							value="Contract 1"></h:button>
+					</p>
+					<p>
+						<h:button styleClass="primebutton" onclick="showContractName()"
+							value="Contract 2"></h:button>
+					</p>
+				</div>
+				<div class="row">
+					<h:link value="Index" outcome="index" styleClass="button"></h:link>
+				</div>
+				<div class="row">
+					<h:link value="Security List" outcome="securities"
+						styleClass="button"></h:link>
+				</div>
+			</div>
+		</ui:define>
+
+		<ui:define name="content-bottom">
+			<div>
+				<h:graphicImage library="bianco" name="img/biancoPublic1.jpg" />
+			</div>
+			<p>
+				<h:outputText
+					value="GPLv3 Copyright by Klaus Landsdorf - Lohne (Olb) - Germany"></h:outputText>
+			</p>
+		</ui:define>
+	</ui:composition>
+</f:view>
+</html>

@@ -1,0 +1,41 @@
+/*
+    JaCoCo Settings
+
+    BUILDSCRIPT-CLASSPATH-DEPENDENCY:  'com.github.abirmingham:gradle-jacoco-plugin:1.+'
+ 
+    GNU GPLv3 Copyright by Klaus Landsdorf - Lohne (Olb) - Germany
+
+	http://bianco-royal.com/		
+ */
+apply plugin: 'jacoco'
+
+logger.info("JaCoCo 1.+ Plugin activated Tool-Version ${project.jacocoToolVersion}")
+
+jacoco {
+    toolVersion = project.jacocoToolVersion
+}
+
+test {
+    jacoco {
+        append false
+        excludes.add("**/*Main*.class")
+		excludes.add("**/generated/**")
+		excludes.add("**/*_.class")
+    }
+}
+
+jacocoTestReport {
+    group = 'reporting'
+    description = 'Generate Jacoco coverage reports after running tests.'
+
+    reports {
+        xml.enabled true
+        csv.enabled false
+        html.enabled true
+        html.destination "${buildDir}/reports/jacocoHtml"
+    }
+
+    // additionalSourceDirs = files(sourceSets.main.allJava.srcDirs)
+}
+
+build.dependsOn jacocoTestReport

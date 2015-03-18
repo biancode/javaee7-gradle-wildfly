@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<f:view contracts="bootstrap">
+	<ui:composition template="/layout.xhtml">
+		<ui:define name="content-top">Bootstrapper-Site</ui:define>
+
+		<ui:define name="content-center">
+			<div class="container">
+				<div class="row">
+					<h:outputLabel value="Hello, world to Java EE 7 Quickstart!" />
+				</div>
+				<div class="row">
+					<h:link value="App-Start" outcome="start"></h:link>
+				</div>
+				<div class="row">
+
+					<div class="page-header">
+						<h1>Buttons</h1>
+					</div>
+					<p>
+						<h:button styleClass="btn btn-info" onclick="showContractName()"
+							value="Contract Info"></h:button>
+					</p>
+					<p>
+						<h:button styleClass="btn btn-lg btn-success"
+							onclick="showContractName()" value="Contract Success"></h:button>
+					</p>
+					<p>
+						<h:button styleClass="btn btn-sm btn-warning"
+							onclick="showContractName()" value="Contract Warning"></h:button>
+					</p>
+					<p>
+						<h:button styleClass="btn btn-xs btn-danger"
+							onclick="showContractName()" value="Contract Danger"></h:button>
+					</p>
+					<p>
+						<h:button styleClass="btn btn-primary"
+							onclick="showContractName()" value="Contract Primary"></h:button>
+					</p>
+				</div>
+			</div>
+		</ui:define>
+
+		<ui:define name="content-bottom">GPLv3 Copyright by Klaus Landsdorf - Lohne (Olb) - Germany</ui:define>
+	</ui:composition>
+</f:view>
+</html>

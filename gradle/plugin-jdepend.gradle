@@ -1,0 +1,20 @@
+/*
+    JDepend Einstellungen
+
+    Gradle Website Info:
+    Performs quality checks on your project's source files using JDepend and generates reports from these checks.
+ 
+    GNU GPLv3 Copyright by Klaus Landsdorf - Lohne (Olb) - Germany
+
+	http://bianco-royal.com/		
+ */
+apply plugin: 'jdepend'
+
+logger.info('JDepend Plugin activated')
+
+tasks.withType(JDepend) {
+    reports {
+        xml.enabled true
+        text.enabled false
+    }
+}

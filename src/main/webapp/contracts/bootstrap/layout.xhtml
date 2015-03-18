@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html">
+<h:head>
+	<title>Wildfly 8+ Bootstrap - Java EE 7</title>
+
+	<h:outputStylesheet name="css/bootstrap.min.css"></h:outputStylesheet>
+	<h:outputScript name="js/bootstrap.min.js"></h:outputScript>
+
+	<h:outputStylesheet name="design.css"></h:outputStylesheet>
+	<h:outputScript name="app.min.js"></h:outputScript>
+</h:head>
+<h:body>
+
+	<div id="web-layout" class="container">
+
+		<div id="web-content-top" class="row">
+			<ui:insert name="content-top">[TOP CONTRACT BOOTSTRAP]</ui:insert>
+		</div>
+
+		<div class="row">
+			<div id="web-content-left" class="col-md-2">
+				<ui:insert name="content-left">
+					<ui:include src="navbar.xhtml" />
+				</ui:insert>
+			</div>
+			<div id="web-content-center" class="col-md-7">
+				<ui:insert name="content-center">[CENTER CONTRACT BOOTSTRAP]</ui:insert>
+			</div>
+			<div id="web-content-right" class="col-md-1">
+				<ui:insert name="content-right">[RIGHT CONTRACT BOOTSTRAP]</ui:insert>
+			</div>
+		</div>
+
+		<div id="web-content-bottom" class="row">
+			<ui:insert name="content-bottom">[BOTTOM CONTRACT BOOTSTRAP]</ui:insert>
+		</div>
+
+	</div>
+
+</h:body>
+</html>

@@ -1,0 +1,76 @@
+/*
+    Application Settings for App-Distribution
+	
+	distZip and distTar your jar
+	
+	GNU GPLv3 Copyright by Klaus Landsdorf - Lohne (Olb) - Germany
+
+	http://bianco-royal.com/
+ */
+apply plugin: 'application'
+
+task createDocs {
+    ext.docs = file("$buildDir/docs")
+    outputs.dir ext.docs
+    doLast {
+        ext.docs.mkdirs()
+        new File(ext.docs, "readme.txt").write(project.description)
+    }
+}
+
+task createProps {
+  ext.props = file("$buildDir/props")
+  outputs.dir ext.props
+  doLast {
+      ext.props.mkdirs()
+
+      new File(ext.props, "log4j.conf").write(file("log4j.conf").text
+        .replace("INFO, stdout, file", project.rootLogger)
+        .replace("appender.'file.File'=", "appender.'file.File'=\"${project.rootLoggerPfad}/${project.environment}/${project.name}-conf.log\""))
+      
+      new File(ext.props, "log4j.properties").write(file("log4j.properties").text
+        .replace("INFO, stdout, file", project.rootLogger)
+        .replace("log4j.appender.file.File=", "log4j.appender.file.File=${project.rootLoggerPfad}/${project.environment}/${project.name}-prop.log"))
+      
+      new File(ext.props, "runtime.properties").write(file("runtime.properties").text
+        .replace("environment=", "environment=${project.environment}")
+        .replace("databaseHostname=", "databaseHostname=${project.databaseHostname}")
+		.replace("dataDirectory=", "dataDirectory=${project.dataDirectory}")
+  }
+}
+
+applicationDistribution.from(createDocs) {
+    into "docs"
+}
+
+applicationDistribution.from(createProps) {
+  into "bin"
+}
+
+startScripts {
+  
+  doLast {
+    
+      switch(javaVersion){
+        
+        case "1.6":
+        unixScript.text = unixScript.text.replace("#!/usr/bin/env bash", '#!/usr/bin/env bash\nexport JAVA_HOME=/opt/java/jdk6\nexport PATH=$JAVA_HOME/bin:$PATH')
+        windowsScript.text = windowsScript.text.replace("@if \"%DEBUG%\" == \"\" @echo off", "@if \"%DEBUG%\" == \"\" @echo off\r\nset JAVA_HOME=%JDK6%\r\nset PATH=%JAVA_HOME%/bin:%PATH%\r\n")
+        break
+      
+        case "1.7":
+          unixScript.text = unixScript.text.replace("#!/usr/bin/env bash", '#!/usr/bin/env bash\nexport JAVA_HOME=/opt/java/jdk7\nexport PATH=$JAVA_HOME/bin:$PATH')
+          windowsScript.text = windowsScript.text.replace("@if \"%DEBUG%\" == \"\" @echo off", "@if \"%DEBUG%\" == \"\" @echo off\r\nset JAVA_HOME=%JDK7%\r\nset PATH=%JAVA_HOME%/bin:%PATH%\r\n")
+        break
+        
+        case "1.8":
+          unixScript.text = unixScript.text.replace("#!/usr/bin/env bash", '#!/usr/bin/env bash\nexport JAVA_HOME=/opt/java/jdk8\nexport PATH=$JAVA_HOME/bin:$PATH')
+          windowsScript.text = windowsScript.text.replace("@if \"%DEBUG%\" == \"\" @echo off", "@if \"%DEBUG%\" == \"\" @echo off\r\nset JAVA_HOME=%JDK8%\r\nset PATH=%JAVA_HOME%/bin:%PATH%\r\n")
+        break
+        
+        default:
+          break
+      }
+      
+  }
+}

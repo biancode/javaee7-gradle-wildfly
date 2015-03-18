@@ -1,0 +1,24 @@
+/*
+    Codenarc Groovy Code Quality Settings
+
+    Gradle Website Info:
+    The CodeNarc plugin performs quality checks on your project's Groovy source
+    files using CodeNarc and generates reports from these checks.
+ 
+    GNU GPLv3 Copyright by Klaus Landsdorf - Lohne (Olb) - Germany
+
+	http://bianco-royal.com/		
+ */
+apply plugin: 'codenarc'
+
+logger.info('Codenarc Plugin aktiviert')
+
+dependencies {
+	codenarc 'org.codenarc:CodeNarc:+'
+}
+
+codenarc {
+	ignoreFailures true
+	// configFile = file("${project.pluginConfigPath}/codenarc/StarterRuleSetAllRules.groovy")
+	configFile = file("${project.pluginConfigPath}/codenarc/StarterRuleSetAllRulesbyCategory.groovy")
+}

@@ -1,0 +1,85 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	template="templates/masterLayout.xhtml">
+
+	<f:view contracts="bootstrap">
+		<ui:composition template="/layout.xhtml">
+			<ui:define name="content-top">Security Site</ui:define>
+
+			<ui:define name="content-center">
+				<h:form>
+					<p:dataTable id="tbl" var="security" widgetVar="securitiesTable"
+						value="#{securityListView.securities}"
+						paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {Exporters}"
+						paginator="true" rows="25" style="margin-bottom:20px"
+						filteredValue="#{securityListView.filteredSecurities}"
+						emptyMessage="No securities found with given criteria">
+
+						<f:facet name="header">
+							<p:outputPanel deferred="true">
+								<h2>Securities</h2>
+							</p:outputPanel>
+							<p:outputPanel style="float:right;margin-top:6px">
+								<h:outputText value="Suchen:" />
+								<p:inputText id="globalFilter"
+									onkeyup="PF('securitiesTable').filter()" style="width:200px"
+									placeholder="Suchbegriff" />
+							</p:outputPanel>
+						</f:facet>
+
+						<f:facet name="{Exporters}">
+							<h:commandLink>
+								<p:graphicImage library="bianco" name="img/excel.png"
+									width="24" />
+								<p:dataExporter type="xls" target="tbl" fileName="Securities" />
+							</h:commandLink>
+							<h:commandLink>
+								<p:graphicImage library="bianco" name="img/pdf.png" width="24" />
+								<p:dataExporter type="pdf" target="tbl" fileName="Securities" />
+							</h:commandLink>
+							<h:commandLink>
+								<p:graphicImage library="bianco" name="img/csv.png" width="24" />
+								<p:dataExporter type="csv" target="tbl" fileName="Securities" />
+							</h:commandLink>
+							<h:commandLink>
+								<p:graphicImage library="bianco" name="img/xml.png" width="24" />
+								<p:dataExporter type="xml" target="tbl" fileName="Securities" />
+							</h:commandLink>
+						</f:facet>
+
+						<p:column filterBy="#{security.id}" headerText="Id"
+							footerText="contains" filterMatchMode="contains"
+							sortBy="#{security.id}">
+							<h:outputText value="#{security.id}" />
+						</p:column>
+
+						<p:column filterBy="#{security.name}" headerText="Name"
+							footerText="contains" filterMatchMode="contains">
+							<h:outputText value="#{security.name}" />
+						</p:column>
+
+						<p:column filterBy="#{security.password}" headerText="Password"
+							footerText="contains" filterMatchMode="contains">
+							<h:outputText value="#{security.password}" />
+						</p:column>
+
+					</p:dataTable>
+				</h:form>
+			</ui:define>
+
+			<ui:define name="content-bottom">
+				<div>
+					<h:graphicImage library="bianco" name="img/prime.png" />
+				</div>
+				<p>
+					<h:outputText
+						value="GPLv3 Copyright by Klaus Landsdorf - Lohne (Olb) - Germany"></h:outputText>
+				</p>
+			</ui:define>
+		</ui:composition>
+	</f:view>
+
+</ui:composition>

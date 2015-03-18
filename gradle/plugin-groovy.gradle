@@ -1,0 +1,29 @@
+/*
+    Groovy Settings
+ 
+    GNU GPLv3 Copyright by Klaus Landsdorf - Lohne (Olb) - Germany
+
+	http://bianco-royal.com/		
+ */
+apply plugin: 'java'
+apply plugin: 'groovy'
+
+logger.info("Groovy $project.groovyVersion Plugin activated")
+
+/*
+ *  Wildfly 8.2.0.Final may doesn't work with Java 8
+ *  so we do automatic project change to Java 7 for it 
+ */
+if(project.wildflyVersion == '8.2.0.Final') {
+  project.javaVersion = 1.7
+}
+
+sourceCompatibility = project.javaVersion
+targetCompatibility = project.javaVersion
+
+compileJava.options.encoding = project.encoding
+compileTestJava.options.encoding = project.encoding
+
+dependencies {
+    compile group: 'org.codehaus.groovy', name: 'groovy-all', version: project.groovyVersion
+}

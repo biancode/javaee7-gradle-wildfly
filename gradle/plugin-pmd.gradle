@@ -1,0 +1,51 @@
+/*
+    PMD Einstellungen
+
+    Gradle Website Info:
+    Performs quality checks on your project's Java source files using PMD and generates reports from these checks.
+
+    Rulesets: http://pmd.sourceforge.net/
+	
+    GNU GPLv3 Copyright by Klaus Landsdorf - Lohne (Olb) - Germany
+
+	http://bianco-royal.com/	
+ */
+apply plugin: 'pmd'
+
+logger.info('PMD Plugin aktiviert')
+logger.info("pluginConfigPath: ${project.pluginConfigPath}")
+
+pmd {
+	ruleSets = [
+		'java-basic'
+		, 'java-braces'
+		, 'java-naming'
+		, 'java-clone'
+		, 'java-codesize'
+		, 'java-controversial'
+		, 'java-design' 
+		, 'java-finalizers'
+		, 'java-imports'
+		, 'java-j2ee'
+		, 'java-javabeans'
+		, 'java-junit'
+		, 'java-logging-jakarta-commons'
+		, 'java-logging-java'
+		, 'java-migrating'
+		, 'java-optimizations'
+		, 'java-strictexception'
+		, 'java-strings'
+		, 'java-sunsecure'
+		, 'java-typeresolution'
+		, 'java-unusedcode'
+    ]
+	
+	ignoreFailures true
+}
+
+tasks.withType(Pmd) {
+  
+    exclude '**/generated/**'
+   
+    ignoreFailures = true
+}

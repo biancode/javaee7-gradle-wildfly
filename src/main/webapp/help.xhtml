@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<f:view contracts="default">
+	<ui:composition template="/layout.xhtml">
+		<ui:define name="content-top">Help-Site</ui:define>
+
+		<ui:define name="content-center">
+			<p:media value="/resources/pdf/primefaces_user_guide_5_1.pdf"
+				width="100%"
+				style="max-height: 100%; height: 99%; min-height: 740px" />
+			<div class="row">
+				<h:link value="Security List" outcome="securities"
+					styleClass="button"></h:link>
+				<h:button styleClass="primebutton" onclick="showContractName()"
+					value="Contract"></h:button>					
+			</div>
+		</ui:define>
+
+		<ui:define name="content-bottom">
+			<div>
+				<h:graphicImage library="bianco" name="img/primeLogoBlue.svg" />
+			</div>
+			<p>
+				<h:outputText
+					value="GPLv3 Copyright by Klaus Landsdorf - Lohne (Olb) - Germany"></h:outputText>
+			</p>
+		</ui:define>
+	</ui:composition>
+</f:view>
+</html>

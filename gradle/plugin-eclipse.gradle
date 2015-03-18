@@ -1,0 +1,34 @@
+/*
+    Eclipse Settings
+
+    Gradle Website Info:
+    Generates files that are used by Eclipse IDE, thus making it possible to import the project into Eclipse.
+	
+     GNU GPLv3 Copyright by Klaus Landsdorf - Lohne (Olb) - Germany
+
+	http://bianco-royal.com/		
+ */
+apply plugin: 'eclipse'
+
+logger.info('Eclipse Plugin activated')
+
+eclipseProject {
+
+    def sep = System.getProperty('file.separator')
+    def eclipseSettingsFile = getProjectDir().toString() + sep + ".settings" + sep + "org.eclipse.core.resources.prefs"
+
+    logger.info("eclipseSettingsFile: ${eclipseSettingsFile}")
+
+    ext.dateiPfad = new File(eclipseSettingsFile)
+
+    ext.settingPfad = new File(ext.dateiPfad.getParent())
+    if (!ext.settingPfad.exists()) {
+        logger.info("settingPfad: ${ext.settingPfad} create")
+        ext.settingPfad.mkdirs()
+    }
+
+    ext.dateiPfad.withWriter {
+        it.println "eclipse.preferences.version=1"
+        it.println "encoding=" + project.encoding
+    }
+}

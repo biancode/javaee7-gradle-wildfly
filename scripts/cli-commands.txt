@@ -1,0 +1,76 @@
+/*
+    Gradle Java EE 7 - Wildfly 8+ - Quickstart Project
+
+    GNU GPLv3 Copyright by Klaus Landsdorf - Lohne (Olb) - Germany
+
+	http://bianco-royal.com/
+ */
+
+Add User to Wildfly
+##############################################################################
+
+Unix
+/wildfly9a1/bin/add-user.sh
+
+Windows
+wildfly-9.0.0.Alpha1/bin/add-user.bat
+
+commands in add-user programm
+
+	a
+	ManagementRealm
+	admin
+	yourPassword
+	yes
+	no
+
+
+Module install
+##############################################################################
+
+Unix
+/wildfly9a1/bin/standalone.sh -Djboss.server.base.dir=/wildfly9a1/standalone -Djboss.bind.address=localhost -Djboss.bind.address.management=localhost -Djboss.socket.binding.port-offset=0 -c standalone.xml
+
+/Users/klaus/appserver/wildfly-9.0.0.Alpha1/bin/standalone.sh -Djboss.server.base.dir=/Users/klaus/appserver/wildfly-9.0.0.Alpha1/standalone -Djboss.bind.address=localhost -Djboss.bind.address.management=localhost -Djboss.socket.binding.port-offset=0 -c standalone.xml
+
+/wildfly9a1/bin/jboss-cli.sh --controller=localhost:9990 -c
+
+Windows
+wildfly-9.0.0.Alpha1/bin/standalone.bat
+wildfly-9.0.0.Alpha1/bin/jboss-cli.bat --controller=localhost:9990 -c --gui
+
+
+The jar file of driver have to be in in a local folder.
+You have to give the absolute path to file in resources variable.
+
+CLI Commands - CLI Commands - CLI Commands
+##############################################################################
+
+module add --name=oracle.jdbc --resources=ojdbc6.jar --dependencies=javax.api
+
+module add --name=mysql.jdbc --resources=mysql-connector-java-5.1.34.jar --dependencies=javax.api
+
+*Resources needs the absolute path*
+
+Example:  --resources=C:\TEMP\mysql-connector-java-5.1.34.jar  or --resources=/opt/driver/mysql-connector-java-5.1.34.jar
+
+---------------
+optional remove default datasources - do not if you use it on testing
+/subsystem=datasources/data-source=ExampleDS/:remove
+/subsystem=datasources/jdbc-driver=h2/:remove
+---------------
+
+Oracle
+/subsystem=datasources/jdbc-driver=Oracle/:add(driver-module-name=oracle.jdbc,driver-name=Oracle,jdbc-compliant=false,driver-class-name=oracle.jdbc.OracleDriver)
+/subsystem=datasources/data-source=OracleBetaDS/:add(jndi-name=java:/OracleDS,driver-name=Oracle,connection-url==jdbc:oracle:thin:@ORA-SERVER-NAME:1521:INSTANCE,password=SECRET,max-pool-size=20,enabled=true,blocking-timeout-wait-millis=5000,background-validation-millis=120000,track-statements=TRUE,flush-strategy=FailingConnectionOnly,stale-connection-checker-class-name=org.jboss.jca.adapters.jdbc.extensions.oracle.OracleStaleConnectionChecker,exception-sorter-class-name=org.jboss.jca.adapters.jdbc.extensions.oracle.OracleExceptionSorter,background-validation=true,check-valid-connection-sql=SELECT 1 FROM SYS.DUAL,user-name=$YOUR-ORA-USER-NAME$,min-pool-size=0)
+
+Connection String: jdbc:oracle:thin:@ORA-SERVER-NAME:1521:INSTANCE
+
+MySQL
+/subsystem=datasources/jdbc-driver=MySQL/:add(driver-module-name=mysql.jdbc,driver-name=MySQL,jdbc-compliant=false,driver-class-name=com.mysql.jdbc.Driver)
+/subsystem=datasources/data-source=MySQLDS/:add(jndi-name=java:/MySQLDS,driver-name=MySQL,connection-url=jdbc:mysql://localhost:3306/wildflytest,driver-class=com.mysql.jdbc.Driver,password=SECRET,max-pool-size=20,validate-on-match=false,track-statements=NOWARN,flush-strategy=FailingConnectionOnly,user-name=$YOUR-MYSQL-USER-NAME$,background-validation=false,min-pool-size=0,tracking=false)
+
+Connection String: jdbc:mysql://localhost:3306/wildflytest
+
+
+/:shutdown(restart=true)

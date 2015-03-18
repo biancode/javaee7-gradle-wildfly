@@ -1,0 +1,39 @@
+/* 
+	Jetty Settings
+ 
+    GNU GPLv3 Copyright by Klaus Landsdorf - Lohne (Olb) - Germany
+
+	http://bianco-royal.com/	
+ */	
+apply plugin: 'jetty'
+// apply plugin: 'org.akhikhl.gretty'
+
+httpPort = 8085
+
+// TODO doesn't work for now with faces
+dependencies {
+  // http://mvnrepository.com/
+  javaee7gradlewildflyRuntime 'javax:javaee-api:7.0'
+  javaee7gradlewildflyRuntime 'javax.faces:javax.faces-api:2.2'
+  javaee7gradlewildflyRuntime 'javax.servlet:javax.servlet-api:3.1.0'
+  javaee7gradlewildflyRuntime 'com.sun.faces:jsf-api:2.2.10'
+  javaee7gradlewildflyRuntime 'com.sun.faces:jsf-impl:2.2.10'
+  javaee7gradlewildflyRuntime 'org.jboss.weld:weld-spi:3.0.Alpha5'
+}
+  
+jettyRun {
+  
+  classpath += configurations.javaee7gradlewildflyRuntime
+  additionalRuntimeJars += configurations.javaee7gradlewildflyRuntime
+  
+  doLast {
+    logger.info("JettyRun additional JARs: ${configurations.javaee7gradlewildflyRuntime.toString()}")
+  }
+}
+
+
+//gretty {
+//  port = 8084
+//  contextPath = '/'
+//  servletContainer = 'jetty9'
+//}

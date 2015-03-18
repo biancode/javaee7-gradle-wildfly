@@ -1,0 +1,38 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+	<h:form id="web-mainmenuform">
+		<p:growl id="messages" showDetail="true" life="2000" />
+
+			<p:slideMenu id="web-mainmenu" styleClass="mainmenu">
+				<p:menuitem value="Home" url="index.html" />
+
+				<p:submenu label="Exaples">
+					<p:submenu label="Bootstrap">
+						<p:menuitem value="Index-Site" url="index.xhtml" />
+						<p:menuitem value="Bootstrapper" url="bootstrapper.xhtml" />
+					</p:submenu>
+					<p:submenu label="Default">
+						<p:menuitem value="Start-Site" url="start.xhtml" />
+					</p:submenu>
+					<p:submenu label="JPA">
+						<p:menuitem value="Security" url="securities.xhtml" />
+					</p:submenu>
+				</p:submenu>
+				
+				<p:menuitem value="Help" url="help.xhtml" />
+			</p:slideMenu>
+
+			<p:panel id="web-recourcemenu" header="Resources" footer="Java EE 7 Web-API" styleClass="resourcemenu">
+				<h:panelGrid columns="3" cellpadding="10">
+					<h:graphicImage library="bianco" name="biancoPublic.jpg" width="60"
+						height="76.5" />
+				</h:panelGrid>
+			</p:panel>
+	</h:form>
+
+</ui:composition>

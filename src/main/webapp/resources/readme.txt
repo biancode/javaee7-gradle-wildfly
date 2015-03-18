@@ -1,0 +1,1 @@
+resources in this folder are public, because you can reference directly in your browser

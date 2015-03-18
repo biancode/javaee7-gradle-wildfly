@@ -1,0 +1,17 @@
+/*
+    IntelliJ Settings
+
+    Gradle Website Info:
+    Generates files that are used by Intellij IDEA IDE, thus making it possible to import the project into IDEA.
+	
+	GNU GPLv3 Copyright by Klaus Landsdorf - Lohne (Olb) - Germany
+
+	http://bianco-royal.com/
+ */
+apply plugin: 'idea'
+
+logger.info('Idea Plugin activated')
+
+// Making all source dirs test source dirs to work around issues with IDEA 13+ compilation
+idea.module.testSourceDirs = idea.module.testSourceDirs + idea.module.sourceDirs
+idea.module.sourceDirs = [] as Set

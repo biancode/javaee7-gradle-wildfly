@@ -1,0 +1,54 @@
+/*
+    Maven Settings
+	
+	to generate POM on Repo Deployment
+		 
+    GNU GPLv3 Copyright by Klaus Landsdorf - Lohne (Olb) - Germany
+
+	http://bianco-royal.com/
+ */
+apply plugin: 'maven'
+
+logger.info('Maven Plugin activated')
+
+repositories {
+
+    mavenCentral()
+
+    jcenter()
+
+    maven {
+        name = "Maven Repository"
+        url = "${project.artifactsURL}${project.artifactsRepoKey}".toURL()
+    }
+
+    maven { 
+        name "JBoss Maven 2"
+        url "https://repository.jboss.org/".toURL() 
+    }
+    
+    maven { 
+        name "Apache Maven 2"
+        url "http://repo.maven.apache.org/maven2/".toURL() 
+    }
+    
+    maven { 
+        name "Gradle Properties Repo"
+        url "${project.artifactsURL}${project.artifactsRepoKey}".toURL() 
+    }
+    
+    maven { 
+        name "Gralde Wildfly Plugin Bintray"
+        url "http://dl.bintray.com/fwelland/FredsStuff".toURL() 
+    }
+    
+    maven { 
+        name "JBoss Nexus Maven 2"
+        url "https://repository.jboss.org/nexus/content/repositories/".toURL() 
+    }
+    
+    ivy {
+        name = "Ivy Repository"
+        url = "${project.artifactsURL}${project.artifactsRepoKey}".toURL()
+    }
+}

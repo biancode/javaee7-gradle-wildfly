@@ -1,0 +1,17 @@
+/*
+    buildscript Settings
+
+    WARNING: since Gradle >= 2.1 this must be the first load in build.gradle file
+	
+    GNU GPLv3 Copyright by Klaus Landsdorf - Lohne (Olb) - Germany
+
+	http://bianco-royal.com/	
+ */
+dependencies {
+	classpath 'org.fhw:gradle-wildfly-plugin:0.2'
+	classpath 'com.github.abirmingham:gradle-jacoco-plugin:1.3'
+	classpath 'checkstyle:checkstyle:5.0'
+	classpath 'checkstyle:checkstyle-optional:4.4'
+	classpath 'org.codenarc:CodeNarc:0.22'
+}
+

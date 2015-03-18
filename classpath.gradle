@@ -1,0 +1,15 @@
+/*
+    Project Settings of classpath
+
+	Gradle Java EE 7 - Wildfly 8+ - Quickstart Project
+
+    GNU GPLv3 Copyright by Klaus Landsdorf - Lohne (Olb) - Germany
+
+	http://bianco-royal.com/
+ */
+logger.debug('Project classpath Settings loading')
+
+dependencies {
+    classpath 'org.codehaus.groovy:groovy-all:2.4.1'
+    classpath 'org.primefaces:primefaces:5.1'
+}

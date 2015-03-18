@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html">
+<h:head>
+    <title>Wildfly 8+ - Java EE 7</title>
+
+    <h:outputStylesheet name="design.css"></h:outputStylesheet>
+    <h:outputScript name="app.min.js"></h:outputScript>
+</h:head>
+<h:body>
+    <div id="web-layout">
+        <div id="web-content-top">
+            <ui:insert name="content-top">[TOP CONTRACT DEFAULT]</ui:insert>
+        </div>
+        <div id="web-content-center">
+            <ui:insert name="content-center">[CENTER CONTRACT DEFAULT]</ui:insert>
+        </div>
+        <div id="web-content-bottom">
+            <ui:insert name="content-bottom">[BOTTOM CONTRACT DEFAULT]</ui:insert>
+        </div>
+    </div>
+
+</h:body>
+</html>

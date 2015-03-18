@@ -1,0 +1,36 @@
+/*
+    FindBugs Settings
+
+    Gradle Website Info:
+    Performs quality checks on your project's Java source files using FindBugs and generates reports from these checks.
+ 
+    GNU GPLv3 Copyright by Klaus Landsdorf - Lohne (Olb) - Germany
+
+	http://bianco-royal.com/		
+ */
+apply plugin: 'findbugs'
+
+findbugs.toolVersion = project.findbugToolVersion
+
+logger.info("FindBugs Plugin activated - Tool Version ${project.findbugToolVersion}")
+
+dependencies {
+    // compile 'xml-apis:xml-apis:2.+'
+    compile 'xml-apis:xml-apis:1.0.b2'
+    compile "com.google.code.findbugs:annotations:${project.findbugToolVersion}"
+}
+
+tasks.withType(FindBugs) {
+    exclude '**/generated/**'
+  
+    classes = classes.filter {
+      !it.path.contains(new File("com/github/biancode/jeeseven/model/generated/").path)
+    }
+    
+    reports {
+        xml.enabled true
+        html.enabled false
+    }
+    ignoreFailures = true
+    reportLevel = 'low'
+}
