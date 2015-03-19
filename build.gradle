@@ -10,6 +10,11 @@ buildscript {
   repositories {
   	mavenCentral()
 
+	maven { 
+		name "Gradle Properties Repo"
+	        url "${project.artifactsURL}${project.artifactsRepoKey}"
+	}
+    
   	maven { 
   		name "Gradle Wildfly Plugin"
   		url "http://dl.bintray.com/fwelland/FredsStuff" 
