@@ -27,6 +27,9 @@ default wildfly: 9.0.0.Alpha1
 - Gradle 2.+ now on 2.2.1
 - PowerShell Deployment
 
+Setup your favorite appaserver on gradle.properties
+
+
 Gradle - basic commands
 --------------
 gradle wrapper (once to setup your wrapper)
@@ -80,9 +83,22 @@ This project is configured for Jenkins and its Plugins to show
 * jDepend
 * JUnit 4
 
+
+IDE
+--------------
+
+*It's all tested on Windows 7 and Mac OS X 10.9*
+
+* Eclipse EE 4.4 - Gradle IDE Pack 3.6.x by Eclipse Marketplace
+* STS 3.6.3 - Gradle IDE Pack 3.6.x by Eclipse Marketplace
+* IntelliJ 14.1 - Gradle aboard
+
+
 Links - Documentation used
 --------------
 - http://www.adam-bien.com/
+- https://bintray.com/fwelland/FredsStuff/gradle-wildfly-plugin
+- http://stupidfredtricks.blogspot.de/2014/08/a-simple-gradle-plugin-for-wildfly-and.html
 - https://docs.jboss.org/author/display/WFLY9/Documentation
 - https://developer.jboss.org/wiki/CheatsheetTestingWithGradleArquillianAndWildFly
 - https://developer.jboss.org/wiki/HowToUseEclipseLinkWithAS7
@@ -98,8 +114,12 @@ Links - Documentation used
 - https://developer.jboss.org/wiki/ConfiguringMultipleJBossInstancesOnOneMachine
 - https://www.jfrog.com/confluence/display/RTF/Working+with+Gradle
 
+Help?
+--------------
+Yes, please.
+Make your branch or fork me and send your pull requests!
+
 License
 --------------
 **GNU GPLv3 Copyright**
 *by Klaus Landsdorf - Lohne (Olb) - Germany*
-
