@@ -24,4 +24,4 @@ src/main/java/com/github/biancode/jeeseven/model/generated/
 .classpath
 *.log*
 *.log
-.idea
+.idea/
