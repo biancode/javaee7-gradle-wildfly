@@ -1,6 +1,8 @@
 Java EE 7 - Gradle 2+ - Wildfly
 ==============
 
+*find me with 'java ee 7 gradle wildfly'*
+
 Gradle Wildfly EE 7 Quickstarter
 --------------
 
