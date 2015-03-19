@@ -1,19 +1,21 @@
 /*
-	Wildfly Settings
+  Wildfly Settings
 
-	https://github.com/fwelland/gradle-wildfly-plugin
+  https://github.com/fwelland/gradle-wildfly-plugin
 
-	BUILDSCRIPT-CLASSPATH-DEPENDENCY: 'gradle-plugin:gradle-wildfly-plugin:0.2'
+  BUILDSCRIPT-CLASSPATH-DEPENDENCY: 'org.fhw:gradle-wildfly-plugin:0.2'
 
-	Empfehlung fuer automatische Web-Browser-Tests: Selenium HQ via Firefox Plugin
-	http://www.seleniumhq.org/download/
+  Empfehlung fuer automatische Web-Browser-Tests: Selenium HQ via Firefox Plugin
+  http://www.seleniumhq.org/download/
  
-    GNU GPLv3 Copyright by Klaus Landsdorf - Lohne (Olb) - Germany
+  GNU GPLv3 Copyright by Klaus Landsdorf - Lohne (Olb) - Germany
 
-	http://bianco-royal.com/
+  http://bianco-royal.com/
  */
 apply plugin: 'wildfly'
 apply plugin: 'war'
+
+logger.info("Wildfly Plugin activated with version ${project.wildflyVersion}")
 
 dependencies {
   
@@ -24,7 +26,6 @@ dependencies {
   providedCompile 'javax:javaee-api:7.0'
   
   providedCompile 'com.h2database:h2:1.4.186'
-
   
   // Test Compile Arquillian
   testCompile 'org.jboss.shrinkwrap.resolver:shrinkwrap-resolver-depchain:2.2.0-beta-1'
@@ -33,39 +34,72 @@ dependencies {
   testCompile 'org.jboss.arquillian:arquillian-bom:1.1.7.Final'
   testCompile 'org.jboss.arquillian.junit:arquillian-junit-container:1.1.7.Final'
 
-  // Test Rumtime Arquillian 
-  testRuntime 'org.wildfly:wildfly-arquillian-container-embedded:8.2.0.Final'
+  // Test Rumtime Arquillian - wildfly have to be running on system where you start build
+	if(project.wildflyVersion == '8.2.0.Final') {
+	  testRuntime "org.wildfly:wildfly-arquillian-container-remote:${project.wildflyVersion}"
+	}
+	else {
+	  testRuntime "org.wildfly.arquillian:wildfly-arquillian-container-remote:${project.arquillianContainerVersion}"	
+	}
+	
   testRuntime 'org.slf4j:slf4j-simple:1.7.7'
   testRuntime 'org.mockito:mockito-all:2.0.2-beta'
   testRuntime 'com.sun.faces:jsf-api:2.2.10'
 }
 
-def env = System.getenv()
 
+/*
+  Unix buildserver should be env['HOSTNAME']
+  
+  check it out with command 'env' on your buildservers commandline
+ */
+def env = System.getenv()
+ 
 if(env['COMPUTERNAME'] == 'W2K8-BUILDSERVER') {
   logger.info("setting appserver for buildserver")
   project.wildflyHome = "//D:/appserver/wildfly/wildfly-${project.wildflyVersion}"
 }
 else {
-  logger.info("System.Computername: ${env['COMPUTERNAME']}")
+	if(env['COMPUTERNAME'] != null) {
+	  logger.info("System.Computername: ${env['COMPUTERNAME']}")
+	}
+	else {
+	  logger.info("System.Computername: ${env['HOSTNAME']}")
+	}
+	
 }
 
 ext.jbossHome = hasProperty('jbossHome') ? jbossHome : project.wildflyHome
 
 wildfly {
-  wildfly_home = project.wildflyHome
-  // cli_script = 'jboss-cli.bat'
-  cli_script = 'jboss-cli.sh'
-  // start_script = 'standalone.bat'
-  start_script = 'standalone.sh'
-  path_to_deployable = war.archivePath
-  deployment_name = rootProject.name
+	
+	if(env['OS'] == null) {
+		cli_script = 'jboss-cli.sh'
+		start_script = 'standalone.sh'
+
+		logger.info("Your System to build on: ${env['OSTYPE']}")
+	}
+	else {
+		cli_script = 'jboss-cli.bat'
+		start_script = 'standalone.bat'
+		
+		logger.info("Your System to build on: ${env['OS']}")		
+	}
+		
+	wildfly_home = project.wildflyHome
+  
+	path_to_deployable = war.archivePath
+	deployment_name = rootProject.name
 }
 
 test {
-    // jvmArgs '-XX:MaxPermSize=256m' since Java 8+ not required
-    environment 'JBOSS_HOME', project.wildflyHome
-    systemProperty 'java.util.logging.manager', 'org.jboss.logmanager.LogManager'
+
+  if(project.javaVersion != '1.8' ) {
+		jvmArgs '-XX:MaxPermSize=256m'
+	}
+	
+  environment 'JBOSS_HOME', project.wildflyHome
+  systemProperty 'java.util.logging.manager', 'org.jboss.logmanager.LogManager'
 }
 
 ext {
