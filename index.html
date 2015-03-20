@@ -1,0 +1,184 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Javaee7-gradle-wildfly by biancode</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <script src="javascripts/scale.fix.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>Javaee7-gradle-wildfly</h1>
+        <p>java ee 7, gradle, wildfly, ee7, spock, groovy wildfly, groovy ee</p>
+        <p class="view"><a href="https://github.com/biancode/javaee7-gradle-wildfly">View the Project on GitHub <small>biancode/javaee7-gradle-wildfly</small></a></p>
+        <ul>
+          <li><a href="https://github.com/biancode/javaee7-gradle-wildfly/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/biancode/javaee7-gradle-wildfly/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/biancode/javaee7-gradle-wildfly">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <h1>
+<a id="java-ee-7---gradle-2---wildfly" class="anchor" href="#java-ee-7---gradle-2---wildfly" aria-hidden="true"><span class="octicon octicon-link"></span></a>Java EE 7 - Gradle 2+ - Wildfly</h1>
+
+<p><em>find me with 'java ee 7 gradle wildfly'</em></p>
+
+<h2>
+<a id="gradle-wildfly-ee-7-quickstarter" class="anchor" href="#gradle-wildfly-ee-7-quickstarter" aria-hidden="true"><span class="octicon octicon-link"></span></a>Gradle Wildfly EE 7 Quickstarter</h2>
+
+<p><em>Faces JSF 2.2</em></p>
+
+<ul>
+<li>Contracts</li>
+<li>Templates</li>
+<li>Library Resources handling</li>
+<li>PrimeFaces 5.+ support</li>
+<li>Bootstrap 3+ basic layout</li>
+</ul>
+
+<p><em>JPA 2.1</em></p>
+
+<ul>
+<li>hibernate</li>
+<li>eclipselink</li>
+</ul>
+
+<p><strong>Gradle Java EE 7 - Wildfly - Quickstart Project</strong></p>
+
+<p><em>You need wildfly 8.2+ or 9.+ to use Java EE 7 Features out of the box</em></p>
+
+<p>default wildfly: 9.0.0.Alpha1</p>
+
+<ul>
+<li>Java EE 7 Web Project</li>
+<li>Wildfly 8.+ or Wildfly 9.+</li>
+<li>Gradle 2.+ now on 2.2.1</li>
+<li>PowerShell Deployment</li>
+</ul>
+
+<p>Setup your favorite appaserver on gradle.properties</p>
+
+<h2>
+<a id="gradle---basic-commands" class="anchor" href="#gradle---basic-commands" aria-hidden="true"><span class="octicon octicon-link"></span></a>Gradle - basic commands</h2>
+
+<p>gradle wrapper (once to setup your wrapper)</p>
+
+<p><em>startup your gradle.properties configured local wildfly server</em></p>
+
+<p>Now you can use:</p>
+
+<p>gradlew tasks</p>
+
+<p>gradlew war -i</p>
+
+<p>gradlew clean test -i
+gradlew clean test war -i</p>
+
+<p>gradlew clean build -i
+gradlew clean war -i</p>
+
+<p>gradlew dependencies</p>
+
+<p><em>the first use you should start a download of gradle-version-bin.zip</em></p>
+
+<p>Please install your favorite IDE (Eclipse, IntelliJ, Netbeans) 
+and import this project as Gradle Project.
+<strong>You have to use the build.gradle to import in IDE.</strong>
+You will find a Gradle View in your IDE to see all tasks.</p>
+
+<p><em>Powershell: .\gradlew tasks</em></p>
+
+<p>** TBD / TODO **</p>
+
+<p><em>should be all work without a local appserver on buildserver or host - by CLI</em></p>
+
+<ul>
+<li>Gradle Test should use a port-offset=10000</li>
+<li>Gradle deployment tasks - see ./gradle/plugin.wildfly.gradle</li>
+<li>Gradle server command tasks (restart, reload, start, stop)</li>
+<li>
+<p>Gradle CI build (Jenkins) to test</p>
+
+<p>some code examples inside to test</p>
+</li>
+</ul>
+
+<h2>
+<a id="ci---jenkins" class="anchor" href="#ci---jenkins" aria-hidden="true"><span class="octicon octicon-link"></span></a>CI - Jenkins</h2>
+
+<p>This project is configured for Jenkins and its Plugins to show</p>
+
+<ul>
+<li>PMD</li>
+<li>Checkstyle</li>
+<li>Jacoco</li>
+<li>FindBugs</li>
+<li>Codenarc</li>
+<li>jDepend</li>
+<li>JUnit 4</li>
+</ul>
+
+<h2>
+<a id="ide" class="anchor" href="#ide" aria-hidden="true"><span class="octicon octicon-link"></span></a>IDE</h2>
+
+<p><em>It's all tested on Windows 7 and Mac OS X 10.9</em></p>
+
+<ul>
+<li>Eclipse EE 4.4 - Gradle IDE Pack 3.6.x by Eclipse Marketplace</li>
+<li>STS 3.6.3 - Gradle IDE Pack 3.6.x by Eclipse Marketplace</li>
+<li>IntelliJ 14.1 - Gradle aboard</li>
+</ul>
+
+<h2>
+<a id="links---documentation-used" class="anchor" href="#links---documentation-used" aria-hidden="true"><span class="octicon octicon-link"></span></a>Links - Documentation used</h2>
+
+<ul>
+<li><a href="http://www.adam-bien.com/">http://www.adam-bien.com/</a></li>
+<li><a href="https://bintray.com/fwelland/FredsStuff/gradle-wildfly-plugin">https://bintray.com/fwelland/FredsStuff/gradle-wildfly-plugin</a></li>
+<li><a href="http://stupidfredtricks.blogspot.de/2014/08/a-simple-gradle-plugin-for-wildfly-and.html">http://stupidfredtricks.blogspot.de/2014/08/a-simple-gradle-plugin-for-wildfly-and.html</a></li>
+<li><a href="https://docs.jboss.org/author/display/WFLY9/Documentation">https://docs.jboss.org/author/display/WFLY9/Documentation</a></li>
+<li><a href="https://developer.jboss.org/wiki/CheatsheetTestingWithGradleArquillianAndWildFly">https://developer.jboss.org/wiki/CheatsheetTestingWithGradleArquillianAndWildFly</a></li>
+<li><a href="https://developer.jboss.org/wiki/HowToUseEclipseLinkWithAS7">https://developer.jboss.org/wiki/HowToUseEclipseLinkWithAS7</a></li>
+<li><a href="https://github.com/arquillian/continuous-enterprise-development/">https://github.com/arquillian/continuous-enterprise-development/</a></li>
+<li><a href="https://docs.jboss.org/author/display/WFLY9/JPA+Reference+Guide#JPAReferenceGuide-UsingEclipseLink">https://docs.jboss.org/author/display/WFLY9/JPA+Reference+Guide#JPAReferenceGuide-UsingEclipseLink</a></li>
+<li><a href="http://middlewaremagic.com/jboss/?p=350">http://middlewaremagic.com/jboss/?p=350</a></li>
+<li><a href="http://www.primefaces.org/showcase/">http://www.primefaces.org/showcase/</a></li>
+<li><a href="http://mvnrepository.com/">http://mvnrepository.com/</a></li>
+<li><a href="http://groovy-lang.org/documentation.html">http://groovy-lang.org/documentation.html</a></li>
+<li><a href="http://gradle.org/docs/current/userguide/userguide.html">http://gradle.org/docs/current/userguide/userguide.html</a></li>
+<li><a href="http://git-scm.com/docs/">http://git-scm.com/docs/</a></li>
+<li><a href="http://google-styleguide.googlecode.com/svn/trunk/javaguide.html">http://google-styleguide.googlecode.com/svn/trunk/javaguide.html</a></li>
+<li><a href="https://developer.jboss.org/wiki/ConfiguringMultipleJBossInstancesOnOneMachine">https://developer.jboss.org/wiki/ConfiguringMultipleJBossInstancesOnOneMachine</a></li>
+<li><a href="https://www.jfrog.com/confluence/display/RTF/Working+with+Gradle">https://www.jfrog.com/confluence/display/RTF/Working+with+Gradle</a></li>
+</ul>
+
+<h2>
+<a id="help" class="anchor" href="#help" aria-hidden="true"><span class="octicon octicon-link"></span></a>Help?</h2>
+
+<p>Yes, please.
+Make your branch or fork me and send your pull requests!</p>
+
+<h2>
+<a id="license" class="anchor" href="#license" aria-hidden="true"><span class="octicon octicon-link"></span></a>License</h2>
+
+<p><strong>GNU GPLv3 Copyright</strong>
+<em>by Klaus Landsdorf - Lohne (Olb) - Germany</em></p>
+      </section>
+    </div>
+    <footer>
+      <p>Project maintained by <a href="https://github.com/biancode">biancode</a></p>
+      <p>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></p>
+    </footer>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+    
+  </body>
+</html>
