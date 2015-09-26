@@ -65,7 +65,7 @@ You will find a Gradle View in your IDE to see all tasks.
 
 *should be all work without a local appserver on buildserver or host - by CLI*
 
-- Gradle Test should use a port-offset=10000
+- Gradle Test should use a port-offset=20000
 - Gradle deployment tasks - see ./gradle/plugin.wildfly.gradle
 - Gradle server command tasks (restart, reload, start, stop)
 - Gradle CI build (Jenkins) to test

@@ -1,0 +1,20 @@
+Install MySQL on OS X and Homebrew
+
+> brew install mysql
+
+Start DB without Launchctrl
+
+> mysql.server start
+
+
+> mysql -u root -p
+
+> create database wildflytest;
+
+> use wildflytest;
+
+> create user 'wildfly'@'localhost' identified by 'wildfly';
+
+> grant all on wildflytest.* to 'wildfly'@'localhost';
+
+> 

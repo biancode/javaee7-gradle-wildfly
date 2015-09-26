@@ -98,7 +98,9 @@ test {
   		&& project.javaVersion != '1.9') {
 		jvmArgs '-XX:MaxPermSize=256m'
 	}
-	
+
+  /* jvmArgs '-Djboss.socket.binding.port-offset=20000' */
+  	
   environment 'JBOSS_HOME', project.wildflyHome
   systemProperty 'java.util.logging.manager', 'org.jboss.logmanager.LogManager'
 }
