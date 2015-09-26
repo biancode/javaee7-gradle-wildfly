@@ -28,11 +28,11 @@ dependencies {
   providedCompile 'com.h2database:h2:1.4.186'
   
   // Test Compile Arquillian
-  testCompile 'org.jboss.shrinkwrap.resolver:shrinkwrap-resolver-depchain:2.2.0-beta-1'
-  testCompile 'org.jboss.shrinkwrap.resolver:shrinkwrap-resolver-gradle-depchain:2.2.0-beta-1'
+  testCompile 'org.jboss.shrinkwrap.resolver:shrinkwrap-resolver-depchain:2.2.0'
+  testCompile 'org.jboss.shrinkwrap.resolver:shrinkwrap-resolver-gradle-depchain:2.2.0'
   testCompile 'org.jboss.shrinkwrap:shrinkwrap-impl-base:1.2.2'
-  testCompile 'org.jboss.arquillian:arquillian-bom:1.1.7.Final'
-  testCompile 'org.jboss.arquillian.junit:arquillian-junit-container:1.1.7.Final'
+  testCompile 'org.jboss.arquillian:arquillian-bom:1.1.9.Final'
+  testCompile 'org.jboss.arquillian.junit:arquillian-junit-container:1.1.9.Final'
 
   // Test Rumtime Arquillian - wildfly have to be running on system where you start build
 	if(project.wildflyVersion == '8.2.0.Final') {
@@ -42,9 +42,9 @@ dependencies {
 	  testRuntime "org.wildfly.arquillian:wildfly-arquillian-container-remote:${project.arquillianContainerVersion}"	
 	}
 	
-  testRuntime 'org.slf4j:slf4j-simple:1.7.7'
+  testRuntime 'org.slf4j:slf4j-simple:1.7.12'
   testRuntime 'org.mockito:mockito-all:2.0.2-beta'
-  testRuntime 'com.sun.faces:jsf-api:2.2.10'
+  testRuntime 'com.sun.faces:jsf-api:2.2.12'
 }
 
 
@@ -55,7 +55,7 @@ dependencies {
  */
 def env = System.getenv()
  
-if(env['COMPUTERNAME'] == 'W2K8-BUILDSERVER') {
+if(env['COMPUTERNAME'] == 'BUILDSERVER') {
   logger.info("setting appserver for buildserver")
   project.wildflyHome = "//D:/appserver/wildfly/wildfly-${project.wildflyVersion}"
 }
@@ -94,7 +94,8 @@ wildfly {
 
 test {
 
-  if(project.javaVersion != '1.8' ) {
+  if(project.javaVersion != '1.8' 
+  		&& project.javaVersion != '1.9') {
 		jvmArgs '-XX:MaxPermSize=256m'
 	}
 	

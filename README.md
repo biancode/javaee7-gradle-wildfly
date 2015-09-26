@@ -22,11 +22,11 @@ Gradle Wildfly EE 7 Quickstarter
 
 *You need wildfly 8.2+ or 9.+ to use Java EE 7 Features out of the box*
 
-default wildfly: 9.0.0.Alpha1
+default wildfly: 9.0.1.Final
 
 - Java EE 7 Web Project
 - Wildfly 8.+ or Wildfly 9.+
-- Gradle 2.+ now on 2.2.1
+- Gradle 2.+ now on 2.7
 - PowerShell Deployment
 
 Setup your favorite appaserver on gradle.properties
@@ -91,7 +91,7 @@ IDE
 
 *It's all tested on Windows 7 and Mac OS X 10.9*
 
-* Eclipse EE 4.4 - Gradle IDE Pack 3.6.x by Eclipse Marketplace
+* Eclipse EE 4.4 and 4.5 - Gradle IDE Pack 3.6.x by Eclipse Marketplace
 * STS 3.6.3 - Gradle IDE Pack 3.6.x by Eclipse Marketplace
 * IntelliJ 14.1 - Gradle aboard
 

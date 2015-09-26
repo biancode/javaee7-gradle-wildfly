@@ -9,7 +9,7 @@
 $githubBranch="-biancode"
 # $githubBranch="-master"
 # $wildflyVersion="8.2.0.Final"
-$wildflyVersion="9.0.0.Alpha1"
+$wildflyVersion="9.0.1.Final"
 $wildflyServer = "D:\appserver\wildfly\wildfly-" + $wildflyVersion
 $warPath = "D:\github\javaee7-gradle-wildfly" + $githubBranch + "\build\libs"
 $warFile = "javaee7-gradle-wildfly-1.0.0-SNAPSHOT.war"

@@ -10,6 +10,6 @@
 logger.debug('Project classpath Settings loading')
 
 dependencies {
-    classpath 'org.codehaus.groovy:groovy-all:2.4.1'
-    classpath 'org.primefaces:primefaces:5.1'
+    classpath 'org.codehaus.groovy:groovy-all:2.4.4'
+    classpath 'org.primefaces:primefaces:5.2'
 }

@@ -90,15 +90,15 @@ apply from: "${project.gradleApplyFromPath}/plugin-idea.gradle"
 dependencies {
 
 	// Faces
-    compile 'org.primefaces:primefaces:5.1'
-    compile 'org.primefaces.extensions:primefaces-extensions:3.0.0'
+    compile 'org.primefaces:primefaces:5.2'
+    compile 'org.primefaces.extensions:primefaces-extensions:3.2.0'
 
   // Exporter PDF, XML, ...
   compile 'com.lowagie:itext:4.2.1'
   compile 'org.apache.poi:poi:3.11'
     
 	// JPA
-    providedCompile 'org.hibernate:hibernate-core:4.3.8.Final'
+    providedCompile 'org.hibernate:hibernate-core:5.0.1.Final'
 
 	/*
 		none provided in wildfly/jboss - eclipselink - so you need this
